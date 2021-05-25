@@ -5,9 +5,14 @@ import 'global.dart';
 import 'package:flutter_svg/flutter_svg.dart' as SVG;
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'insurers.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(ReisMain());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).
+      then((_) {
+    runApp(ReisMain());
+  });
 }
 
 class ReisMain extends StatelessWidget {
@@ -16,7 +21,7 @@ class ReisMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Reis Corretora',
+        title: 'Reis Corretora de Seguros',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             accentColor: Colors.black12,
@@ -80,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 200,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: Svg('assets/reis.svg', size: Size(1024, 1024)),
+                          image: AssetImage('assets/reis.png'),
                           fit: BoxFit.contain,
                         )),
                   ),
@@ -131,11 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: BoxDecoration(
           color: Colors.white,
           image: DecorationImage(
-              image: Svg('assets/road-environment.svg', size: Size(1024, 1024)),
-              fit: BoxFit.cover,
+              image: AssetImage('assets/background.png'),
+              fit: BoxFit.contain,
               colorFilter: ColorFilter.mode(
                   Colors.white.withAlpha(50), BlendMode.dstATop),
-              alignment: Alignment.center),
+              alignment: Alignment.topCenter),
         ),
         child: Center(
           child: Column(
@@ -148,10 +153,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 200,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                    image: Svg('assets/reis.svg', size: Size(1024, 1024)),
+                    image: AssetImage('assets/reis.png'),
                     fit: BoxFit.contain,
                   )),
-                  child: Text('v1.0.2',
+                  child: Text('v1.0.3',
                       textAlign: TextAlign.center,
                       style: defaultFont(TextStyle(
                           fontSize: 12,
@@ -255,13 +260,29 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                         ],
                       ))),
+              ElevatedButton.icon(
+                        onPressed: () =>
+                            Launcher.launchURL('http://porto.vc/BLLU_5NHBFJ'),
+                        icon: Image.asset('assets/bllu.png', width: 0, height: 0),
+                        label: Padding(
+                          padding: const EdgeInsets.only(right: 5),
+                          child: Image.asset('assets/bllu.png', width: 370, height: 280),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromRGBO(255, 255, 255, 0.0),
+                          onPrimary: Colors.blue,
+                          shadowColor: Color.fromRGBO(255, 255, 255, 0.0),
+                          elevation: 2,
+                        )
+
+                    ),
               Container(
                 padding: EdgeInsets.only(top: 10, bottom: 11, right: 25),
                 child: ButtonBar(alignment: MainAxisAlignment.center, children: <Widget>[
                   Container(
                     margin: EdgeInsets.all(20),
                     width: 150,
-                    child: Text('©2021 Desenvolvido por Wendell Luiz',
+                    child: Text('©2021 Todos os direitos reservados.',
                         textAlign: TextAlign.center,
                         style: defaultFont(TextStyle(
                             fontSize: 12,
@@ -277,11 +298,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white70,
                     ),
-                    label: Text('/LednewBuilds', style: TextStyle(color: Colors.black87)),
+                    label: Text('Wendell Luiz', style: TextStyle(color: Colors.black87)),
                   ),
                 ]),
-              ),
-              Divider(thickness: 15, color: Colors.grey[400])
+              )
             ],
           ),
         ),

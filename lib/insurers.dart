@@ -18,9 +18,9 @@ List _insurers = [
     'site': 'https://www.allianz.com.br',
     'phones': ['4001 5060', '0800 701 8148', '0800 0130 700'],
     'phone_text': [
-      '(Capitais e regiões metropolitanas)',
-      '(Demais regiões)',
-      '(Assistência 24 horas)'
+      'Capitais e regiões metropolitanas',
+      'Demais regiões',
+      'Assistência 24 horas'
     ],
     'color': Colors.blue[900],
   },
@@ -84,7 +84,7 @@ List _insurers = [
       '3003 5390',
       '0800 434 4340',
     ],
-    'phone_text': ['(Capitais e regiões metropolitanas)', '(Demais regiões)'],
+    'phone_text': ['Capitais e regiões metropolitanas', 'Demais regiões'],
     'color': Colors.green,
   },
   {
@@ -96,7 +96,7 @@ List _insurers = [
       '4020 4848',
       '0800 285 4141',
     ],
-    'phone_text': ['(Capitais e regiões metropolitanas)', '(Demais regiões)'],
+    'phone_text': ['Capitais e regiões metropolitanas', 'Demais regiões'],
     'color': Colors.blue[900],
   },
   {
@@ -212,8 +212,8 @@ class InsurersList extends StatelessWidget {
               child: Stack(
                 children:[
                   Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Text('Selecione sua seguradora', textAlign: TextAlign.center, style: defaultFont(TextStyle(fontSize: 22, fontWeight: FontWeight.w500))),
+                    padding: const EdgeInsets.only(top: 25, left: 28, right: 15),
+                    child: Text('Escolha sua seguradora', textAlign: TextAlign.center, style: defaultFont(TextStyle(fontSize: 22, fontWeight: FontWeight.w500))),
                   ),
               Padding(
                 padding: const EdgeInsets.only(top: 80),
@@ -370,12 +370,11 @@ class Phones extends StatelessWidget {
           new Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: SVGProvider.Svg('assets/road-environment.svg',
-                  size: Size(1024, 1024)),
-              fit: BoxFit.fitHeight,
+              image: AssetImage('assets/background.png'),
+              fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.white.withAlpha(50), BlendMode.dstATop),
-              alignment: Alignment.center),
+              alignment: Alignment.topCenter),
         ),
         child: Center(
             child: Column(
@@ -527,8 +526,7 @@ class Phones extends StatelessWidget {
                             text: '13:30h às 18:00h \n',
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ])),
-            ),
-            Divider(thickness: 15, color: Colors.grey[400])
+            )
           ],
         )),
       ),
@@ -553,8 +551,7 @@ class Services extends StatelessWidget {
           new Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: SVGProvider.Svg('assets/road-environment.svg',
-                  size: Size(1024, 1024)),
+              image: AssetImage('assets/background.png'),
               fit: BoxFit.fitHeight,
               colorFilter: ColorFilter.mode(
                   Colors.white.withAlpha(50), BlendMode.dstATop),
@@ -590,7 +587,7 @@ class Services extends StatelessWidget {
                                 children: <Widget>[
                                   ListTile(
                                     leading: Image.asset('assets/crack.png'),
-                                    title: Text('AutoGlass Vidros',
+                                    title: Text('Autoglass Vidros',
                                         style: defaultFont(TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600, color: Colors.white))),
@@ -623,7 +620,7 @@ class Services extends StatelessWidget {
                                 children: <Widget>[
                                   ListTile(
                                     leading: Image.asset('assets/crack.png'),
-                                    title: Text('CarGlass Vidros',
+                                    title: Text('Carglass Vidros',
                                         style: defaultFont(TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600, color: Colors.white))),
@@ -755,8 +752,6 @@ class Services extends StatelessWidget {
                     )
                   ],
                 ),
-                Padding(padding: EdgeInsets.all(15)),
-                Divider(thickness: 15, color: Colors.grey[400])
             ])),
       ),
     ]))

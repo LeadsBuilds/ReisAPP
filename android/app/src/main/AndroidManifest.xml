@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.reiscorretora.reis_corretora">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Reis Corretora de Seguros"
+        android:label="Reis Corretora"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
